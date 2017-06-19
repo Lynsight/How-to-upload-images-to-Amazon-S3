@@ -88,7 +88,7 @@ var storage = multer.diskStorage({
     }
 });
 
-//you will use this variable here in your app.post() route.
+//you will use this variable, upload, in your app.post() route.
 var upload = multer({
     storage: storage
 });
