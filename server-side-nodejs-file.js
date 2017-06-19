@@ -10,7 +10,7 @@ if (process.env.NODE_ENV !== 'production') {
 const S3_BUCKET = process.env.S3_BUCKET;
 var bucketRegion = 'us-east-1';
 
-//the IDENTITY_POOL_ID variable store in the .env file has a colon in it, so I had to save the string before & after the 
+//the IDENTITY_POOL_ID variable stored in the .env file has a colon in it, so I had to save the string before & after the 
 //colon as two seperate strings and then join them again in the js file.
 const IDENTITY_POOL_ID_1 = process.env.IDENTITY_POOL_ID_1;
 const IDENTITY_POOL_ID_2 = process.env.IDENTITY_POOL_ID_2;
