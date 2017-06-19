@@ -107,7 +107,8 @@ app.get('/', function (request, response) {
     response.render('pages/index');
 });
 
-//this is the route where I stored my client side HTML with embedded JS. You can't see it here (since I removed it) but I'm using the Handlebars templating engine. You may or may not need to know handlebars to understand this example.
+//this is the route where I stored my client side HTML with embedded JS. You can't see it here (since I removed it)
+//but I'm using the Handlebars templating engine. You may or may not need to know handlebars to understand this example.
 app.get('/upload', function (req, res) {
     res.render('pages/upload');
 });
@@ -160,14 +161,14 @@ app.post('/s3', upload.single('picture'), function (req, res, next) {
         //if everything went well and you actually uploaded the file to your S3 bucket, you get confirmation by logging out 
         //the resp from amazon, it will look like the below.
         //{
-        //            '0': null,
-        //            '1': {
-        //                ETag: '"dbbdfaaca237e0ce413c9dddc1343c58"',
-        //                Location: 'https://s3.us-east-2.amazonaws.com/prescriptions-lynsight/2017-06-19-4-11_elhartista_01_50_50.jpg',
-        //                key: '2017-06-19-4-11_elhartista_01_50_50.jpg',
-        //                Key: '2017-06-19-4-11_elhartista_01_50_50.jpg',
-        //                Bucket: 'lynsight'
-        //            }
+        //'0': null,
+        //'1': {
+            // ETag: '"dbbdfaaca237e0ce413c9dddc1343c58"',
+            // Location: 'https://s3.us-east-2.amazonaws.com/prescriptions-lynsight/2017-06-19-4-11_elhartista_01_50_50.jpg',
+            // key: '2017-06-19-4-11_elhartista_01_50_50.jpg',
+            // Key: '2017-06-19-4-11_elhartista_01_50_50.jpg',
+            // Bucket: 'lynsight'
+            // }
         //}
     });
     res.status(200).end();
