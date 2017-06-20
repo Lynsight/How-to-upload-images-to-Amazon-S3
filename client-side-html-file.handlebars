@@ -19,7 +19,7 @@
 {{#section 'jquery'}}
 <script>
     $(document).ready(function() {
-        var picFile, picFileType;
+        var picFile, picFileType, picFileName;
         //selecting the input type="file" here
         $(document).on('change', $('#picFiles'), function() {
             var picFiles = document.getElementById('picFiles').files;
@@ -29,14 +29,15 @@
             console.log(picFile);
 
             picFileType = picFile.type;
-            var picFileName = picFile.name;
+            picFileName = picFile.name;
             console.log(picFile.type + ' ' + picFile.name);
         });
-
+        
+        //here we are selecting the entire form (<form id='uploadForm') and uploading the entire contents of the form,
+        //including the images, to the server.
         $('#uploadForm').on('submit', function(evt) {
             evt.preventDefault();
-            
-            //this function should successfully handle uploading the picture to your backend Nodejs server
+            //this function will handle uploading the picture to your backend Nodejs server
             $(this).ajaxSubmit({
                 contentType: 'application/json',
                 success: function(response) {
