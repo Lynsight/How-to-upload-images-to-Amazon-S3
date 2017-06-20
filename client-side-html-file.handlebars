@@ -1,0 +1,50 @@
+//this is the html (handlebars) code that will run in the browser
+
+<form id='uploadForm' action='/s3' method='post' encType="multipart/form-data">
+    <!--    add multiple to upload multiple files -->
+    <input type="file" id="picFiles" name="picture" required accept="image/*" />
+    <input type='submit' value='Upload!' id="#uploadBtn" />
+</form>
+
+//You will need to load-in the following js libraries to make the ajaxSubmit function work.
+//jQuery Form Plugin version: 3.51.0-2014.06.20 which requires jQuery v1.5 or later
+//which you can get here:
+// http://malsup.github.io/jquery.form.js
+// http://code.jquery.com/jquery-1.7.2.js
+
+//make sure you include jquery.form.js after the main jquery lib, like this:
+//<script src="js/jquery-1.7.2.js"></script>
+//<script src="js/jquery-form-3.51.0.js"></script>
+
+{{#section 'jquery'}}
+<script>
+    $(document).ready(function() {
+        var picFile, picFileType;
+        //selecting the input type="file" here
+        $(document).on('change', $('#picFiles'), function() {
+            var picFiles = document.getElementById('picFiles').files;
+            console.log(picFiles)
+
+            picFile = picFiles[0];
+            console.log(picFile);
+
+            picFileType = picFile.type;
+            var picFileName = picFile.name;
+            console.log(picFile.type + ' ' + picFile.name);
+        });
+
+        $('#uploadForm').on('submit', function(evt) {
+            evt.preventDefault();
+            
+            //this function should successfully handle uploading the picture to your backend Nodejs server
+            $(this).ajaxSubmit({
+                contentType: 'application/json',
+                success: function(response) {
+                    console.log('image uploaded and form submitted');
+                }
+            });
+        });
+    });
+
+</script>
+{{/section}}
